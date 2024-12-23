@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Word Game</title>
+</head>
+<body>
+    <section class="wordle">
+        <div class="container">
+            {% with messages=get_flashed_messages() %}
+                {% if messages %}
+                    <p class="flash">{{ messages[0] }}</p>
+                {% endif %}
+            {% endwith %}
+
+            {% if session.get('message') %}
+                <p class="session-message">{{ session.get('message') }}</p>
+            {% endif %}
+            <form action="/playgame" method="POST">
+                <div>
+                    {% for row_index in range(6) %}
+                        <div class="row">
+                            {% for col in range(5) %}
+                                <input 
+                                    type="text" 
+                                    name="letter_{{ row_index }}_{{ col }}"
+                                    maxlength="1"
+                                    value="{{ game['attempts'][row_index][col] if row_index < game['attempts']|length else '' }}"
+                                    id="{{ game['colors'][row_index][col] if row_index < game['attempts']|length else '' }}"
+
+                                    {% if row_index != game['row'] or game['attempts']|length == 6 %}
+                                        disabled
+                                    {% endif %}
+
+                                    {% if game['winner'] %}
+                                       disabled
+                                    {% endif %}
+
+                                    {% if row_index == game['row'] %}
+                                        class = "current-row"
+                                    {% endif %}
+                                >
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button 
+                    {% if game['attempts']|length == 6 %}disabled{% endif %}
+                    {% if game['winner'] %}disabled{% endif %}
+                    type="submit">
+                    Guess ({{ 6 - game['attempts']|length }})
+                </button>
+            </form>
+            <form action="/newgame" method="POST">
+                <button type="submit">New Game</button>
+            </form>
+    </section>
+</body>
+</html>

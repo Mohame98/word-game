@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Courier New, Courier, monospace;
+}
+
+section {
+    padding: 120px 0;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    width: 90%;
+}
+
+body {
+    background-color: rgb(34, 34, 34);
+    color: rgb(200, 200, 200); 
+}
+
+form:nth-of-type(1) {
+    padding-top: 100px;
+}
+
+.container p {
+    font-size: 17px;
+    margin: 15px 0;
+    text-align: center;
+    padding: 15px 25px;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    background-color: rgb(70, 70, 70);
+    text-transform: capitalize;
+    width: 400px;
+    position: absolute;
+}
+
+.flash {
+    opacity: 0;
+    animation: fadeInOut 7s forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;  
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.session-message {
+    opacity: 0;
+    animation: fadeIn 7s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;  
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+button {
+    background-color: rgb(70, 70, 70); 
+    color: rgb(200, 200, 200); 
+    width: 100%;
+    border: none;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+    transition: 0.4s;
+}
+
+button:hover {
+    background-color: rgb(100, 100, 100);  
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: black;
+    cursor: default;
+}
+
+h2{
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.row{
+    display: flex;
+    gap: 7px;
+    margin-bottom: 7px;
+}
+
+input {
+    width: 75px;
+    height: 70px;
+    border: 2px solid #ccc;
+    text-align: center;
+    outline: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.4s;
+}
+
+input.current-row:hover {
+    opacity: 0.7;
+}
+
+input:focus {
+    opacity: 0.7;
+}
+
+#green {    
+    background-color: darkgreen !important;
+    color: white;
+}
+
+#yellow {
+    background-color: yellow;
+    color: black;
+}
+
+#gray {
+    background-color: lightgray;
+    color: black;
+}
+
+.current-row {
+    background-color: lightblue;
+}
