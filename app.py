@@ -18,7 +18,6 @@ def get_home():
             'colors': [],
             'row': 0,
         }
-
     game = session['game']
     return render_template("game.html", game=game)
 
@@ -40,14 +39,14 @@ def play_game():
           
         game['guessed_letters'].append(letter.lower())
     game['attempts'] = group_attempts(game['guessed_letters'])
-
+    
     valid = word.is_valid_guess(game['attempts'])
     if not valid:
         game['attempts'].pop(-1)
         game['guessed_letters'] = game['guessed_letters'][:-5]
         flash("Please enter a valid word!")
         return redirect("/") 
-        
+
     letter_state.color_change(game['attempts'], game['colors'])
 
     game['winner'] = word.is_winning_guess(game['attempts'])

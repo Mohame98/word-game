@@ -28,7 +28,7 @@
                                     name="letter_{{ row_index }}_{{ col }}"
                                     maxlength="1"
                                     value="{{ game['attempts'][row_index][col] if row_index < game['attempts']|length else '' }}"
-                                    id="{{ game['colors'][row_index][col] if row_index < game['attempts']|length else '' }}"
+                                    id="{{ game['colors'][row_index][col] if row_index < game['colors']|length and col < game['colors'][row_index]|length else '' }}"
 
                                     {% if row_index != game['row'] or game['attempts']|length == 6 %}
                                         disabled
